@@ -31,6 +31,20 @@ public final class Constants {
     REPLAY
   }
 
+  /**
+   * Enable DataLogManager. AdvantageKit doesn't capture everything. This results in writing two
+   * files, one with /AdvantageKit outputs, the other with everything that's visible to
+   * NetworkTables. Capturing everything may not be the correct answer. Need to determine how REPLAY
+   * works
+   */
+  public static final boolean loggingMode = true;
+
+  /**
+   * Enable DataLogManager even in simulation. This tests writing the same logs to the project
+   * directory.
+   */
+  public static final boolean logInSim = false;
+
   // memory profiling
   public static final LoggedProfilerLevel kProfilerLevel =
       RobotBase.isReal() ? LoggedProfilerLevel.Regular : LoggedProfilerLevel.Robot;
