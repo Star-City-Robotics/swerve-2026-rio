@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems.drive;
 
+import com.ctre.phoenix6.signals.MagnetHealthValue;
 import edu.wpi.first.math.geometry.Rotation2d;
 import org.littletonrobotics.junction.AutoLog;
 
@@ -26,6 +27,8 @@ public interface ModuleIO {
     public double turnVelocityRadPerSec = 0.0;
     public double turnAppliedVolts = 0.0;
     public double turnCurrentAmps = 0.0;
+
+    public MagnetHealthValue encoderHealth = MagnetHealthValue.Magnet_Invalid;
 
     public double[] odometryTimestamps = new double[] {};
     public double[] odometryDrivePositionsRad = new double[] {};
