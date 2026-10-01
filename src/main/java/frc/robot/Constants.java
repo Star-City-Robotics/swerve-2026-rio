@@ -8,6 +8,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.RobotBase;
+import frc.robot.util.LoggedProfiler.LoggedProfilerConfig;
+import frc.robot.util.LoggedProfiler.LoggedProfilerLevel;
 
 /**
  * This class defines the runtime mode used by AdvantageKit. The mode is always "real" when running
@@ -28,4 +30,10 @@ public final class Constants {
     /** Replaying from a log file. */
     REPLAY
   }
+
+  // memory profiling
+  public static final LoggedProfilerLevel kProfilerLevel =
+      RobotBase.isReal() ? LoggedProfilerLevel.Regular : LoggedProfilerLevel.Robot;
+  public static final LoggedProfilerConfig kProfilerConfig =
+      new LoggedProfilerConfig(kProfilerLevel, 3.000, 2000.0);
 }
