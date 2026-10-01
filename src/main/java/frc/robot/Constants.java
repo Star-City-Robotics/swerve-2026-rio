@@ -31,6 +31,9 @@ public final class Constants {
     REPLAY
   }
 
+  /** Whether to publish and allow editing of tunable numbers */
+  public static final boolean tuningMode = true;
+
   /**
    * Enable DataLogManager. AdvantageKit doesn't capture everything. This results in writing two
    * files, one with /AdvantageKit outputs, the other with everything that's visible to
