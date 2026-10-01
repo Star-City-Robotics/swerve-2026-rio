@@ -45,6 +45,11 @@ public final class Constants {
    */
   public static final boolean logInSim = false;
 
+  // disabling diagnostics prevents PheonixTuner from functioning! and requires a rebuild/redeploy
+  // to start it. only disable if necessary. May improve cycle time (reduce loop overruns)
+  public static final boolean usePheonixDiagnostics = true;
+  public static final boolean usePheonixLogging = false;
+
   // memory profiling
   public static final LoggedProfilerLevel kProfilerLevel =
       RobotBase.isReal() ? LoggedProfilerLevel.Regular : LoggedProfilerLevel.Robot;

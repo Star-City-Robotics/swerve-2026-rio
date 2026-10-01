@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import com.ctre.phoenix6.SignalLogger;
+import com.ctre.phoenix6.unmanaged.Unmanaged;
 import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -72,6 +74,14 @@ public class Robot extends LoggedRobot {
         Logger.setReplaySource(new WPILOGReader(logPath));
         Logger.addDataReceiver(new WPILOGWriter(LogFileUtil.addPathSuffix(logPath, "_sim")));
         break;
+    }
+
+    if (!Constants.usePheonixLogging) {
+      disablePheonixLogging();
+    }
+    if (!Constants.usePheonixDiagnostics) {
+      // on by default, see note in Constants before disabling!
+      disablePheonixDiagnostics();
     }
 
     // Start AdvantageKit logger
@@ -165,4 +175,14 @@ public class Robot extends LoggedRobot {
   /** This function is called periodically whilst in simulation. */
   @Override
   public void simulationPeriodic() {}
+
+  private static void disablePheonixDiagnostics() {
+    Unmanaged.setPhoenixDiagnosticsStartTime(-1);
+  }
+
+  private static void disablePheonixLogging() {
+    // otherwise, if PheonixAPI detects FMS, it starts log collection/output
+    SignalLogger.enableAutoLogging(false);
+    SignalLogger.stop();
+  }
 }
